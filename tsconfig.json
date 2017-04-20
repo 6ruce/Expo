@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "target": "es5",
+    "outFile": "Main.js",
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "types": [
+      "excalibur"
+    ]
+  }
+}

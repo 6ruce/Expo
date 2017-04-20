@@ -1,0 +1,9 @@
+{
+  "name": "Expo",
+  "version": "0.0.1",
+  "description": "Empty exploration game skellet",
+  "main": "Main.js",
+  "dependencies": {
+    "excalibur": "^0.10.0"
+  }
+}
