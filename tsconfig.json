@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "system",
     "target": "es5",
-    "outFile": "Main.js",
+    "outFile": "www/js/index.js",
     "strictNullChecks": true,
     "noImplicitAny": true,
     "types": [

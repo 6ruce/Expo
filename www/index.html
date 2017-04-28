@@ -15,8 +15,9 @@
 </head>
 
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.12/system-production.js"></script>
-  <script src="./node_modules/excalibur/dist/excalibur.min.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.12/system-production.js"></script>
+  <script src="js/lib/excalibur.min.js"></script>
   <script>System.register("excalibur", [], function($__exports){
     "use strict";
     return {
@@ -26,7 +27,7 @@
         }
     };
    })</script>
-  <script src="./Main.js"></script>
+  <script src="js/index.js"></script>
   <script>System.import("Main")</script>
 </body>
 </html>
