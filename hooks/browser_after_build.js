@@ -3,7 +3,7 @@ module.exports = function(ctx) {
     var path = ctx.requireCordovaModule('path');
 
     var nodeModulesPath = ctx.opts.projectRoot + "/node_modules";
-    var platformJsLibRoot = path.join(ctx.opts.projectRoot, '/platforms/browser/www/js/lib');
+    var jsRoot = path.join(ctx.opts.projectRoot, '/www/js/lib');
 
     var hardCodedMuduleFiles = [
         ["excalibur.min.js", "/excalibur/dist/excalibur.min.js"]
@@ -15,13 +15,13 @@ module.exports = function(ctx) {
         return;
     }
 
-    if (!fs.existsSync(platformJsLibRoot)) {
-        fs.mkdirSync(platformJsLibRoot);
+    if (!fs.existsSync(jsRoot)) {
+        fs.mkdirSync(jsRoot);
     }
 
     hardCodedMuduleFiles.forEach(function(moduleFileConfig) {
         var sourceFile = nodeModulesPath + moduleFileConfig[1];
-        var destFile = platformJsLibRoot + "/" + moduleFileConfig[0];
+        var destFile = jsRoot + "/" + moduleFileConfig[0];
         console.log("Copy module: " + moduleFileConfig[0]);
         fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destFile));
     });

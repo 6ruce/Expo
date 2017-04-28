@@ -24,6 +24,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <platform name="browser">
-      <hook type="after_build" src="hooks/browser_after_build.js" />
+      <hook type="before_build" src="hooks/browser_after_build.js" />
     </platform>
 </widget>
