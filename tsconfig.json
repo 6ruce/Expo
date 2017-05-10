@@ -1,12 +1,10 @@
 {
-  "compilerOptions": {
-    "module": "system",
-    "target": "es5",
-    "outFile": "www/js/index.js",
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "types": [
-      "excalibur"
-    ]
-  }
+    "compilerOptions": {
+        "module": "system",
+        "target": "es5",
+        "outFile": "www/js/index.js",
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node"
+    }
 }
