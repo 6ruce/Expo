@@ -2,6 +2,7 @@ import { IScene } from "./Scenes/IScene"
 import { Actor } from "./Actors/Actor"
 import { ActorExtender } from "./ActorExtender"
 import * as Ex from "excalibur"
+import * as R from "ramda"
 
 export class Director {
     public static direct(engine: Ex.Engine, scenes: IScene[]) {
@@ -13,7 +14,6 @@ export class Director {
 
     private static createScene(gameScene: IScene): Ex.Scene {
         const scene = new Ex.Scene();
-        console.log(gameScene.actors);
         gameScene.actors.forEach(actor => {
             console.log("Actor - loaded")
             scene.add(Director.createActor(actor))
@@ -21,15 +21,14 @@ export class Director {
         return scene;
     }
 
-    private static createActor(gameObject: Actor): Ex.Actor | null {
+    private static createActor(gameObject: Actor): Ex.Actor {
         let actor = new Ex.Actor(gameObject.x, gameObject.y,
             gameObject.width, gameObject.height, Ex.Color.Black);
         switch (gameObject.kind) {
             case "Person":
-                //actor.acc.x = 150;
                 actor = new ActorExtender(gameObject.x, gameObject.y,
                     gameObject.width, gameObject.height, Ex.Color.Black);
-                actor.updater = (engine: Ex.Engine, delta: number) => {
+                (actor as ActorExtender).updater = (engine: Ex.Engine, delta: number) => {
                     if (engine.input.keyboard.isHeld(Ex.Input.Keys.Up)) {
                         actor.body.acc.y = -3000;
                     } else {

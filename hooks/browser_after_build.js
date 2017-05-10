@@ -6,7 +6,8 @@ module.exports = function(ctx) {
     var jsRoot = path.join(ctx.opts.projectRoot, '/www/js/lib');
 
     var hardCodedMuduleFiles = [
-        ["excalibur.min.js", "/excalibur/dist/excalibur.min.js"]
+        ["excalibur.min.js", "/excalibur/dist/excalibur.min.js"],
+        ["ramda.min.js", "/ramda/dist/ramda.min.js"]
     ];
 
     if (!fs.existsSync(nodeModulesPath)) {
@@ -25,5 +26,6 @@ module.exports = function(ctx) {
         console.log("Copy module: " + moduleFileConfig[0]);
         fs.createReadStream(sourceFile).pipe(fs.createWriteStream(destFile));
     });
+
     return;
 };

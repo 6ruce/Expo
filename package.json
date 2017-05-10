@@ -4,6 +4,7 @@
   "description": "Empty exploration game skellet",
   "main": "Main.js",
   "dependencies": {
+    "@types/ramda": "0.0.9",
     "excalibur": "^0.10.0"
   }
 }
