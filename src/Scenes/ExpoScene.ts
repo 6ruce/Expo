@@ -10,9 +10,9 @@ export class ExpoScene implements IScene {
     public get actors(): Actor[] {
         return [
             new Person(250, 400, 32, 63),
-            new Thing(450, 25, 50, 50),
-            new Thing(450, 100, 50, 50),
-            new Thing(450, 150, 50, 50),
+            new Thing(250, 300, 50, 50),
+            new Thing(150, 100, 50, 50),
+            new Thing(350, 100, 50, 50),
             new Ground(250, 500, 500, 50)
         ];
     }
