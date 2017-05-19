@@ -7,6 +7,7 @@ module.exports = function(ctx) {
 
     var hardCodedMuduleFiles = [
         ["excalibur.min.js", "/excalibur/dist/excalibur.min.js"],
+        ["excalibur.min.js.map", "/excalibur/dist/excalibur.min.js.map"],
         ["ramda.min.js", "/ramda/dist/ramda.min.js"]
     ];
 

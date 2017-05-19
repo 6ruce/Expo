@@ -17,11 +17,14 @@ export class App {
         Ex.Physics.collisionResolutionStrategy = Ex.CollisionResolutionStrategy.RigidBody;
         Ex.Physics.acc.setTo(0, 700);
 
-        Director.direct(game, [new ExpoScene()]);
 
         console.log("Game started!")
-        game.start();
-        game.goToScene("MainScene");
+        let txAnimPlayerIdle = new Ex.Texture("/img/hero.png");
+        let loader = new Ex.Loader([txAnimPlayerIdle]);
+        game.start(loader).then(() => {
+            Director.direct(game, [new ExpoScene()], {textures: { Person: txAnimPlayerIdle}});
+            game.goToScene("MainScene");
+        });
 
     }
 }
