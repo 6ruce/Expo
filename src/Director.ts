@@ -50,8 +50,8 @@ export class Director {
                 };
                 actor.collisionType = Ex.CollisionType.Active;
                 let playerIdleSheet = new Ex.SpriteSheet(resources.textures.Person, 5, 1, 32, 63);
-            let playerIdleAnimation = playerIdleSheet.getAnimationBetween(engine, 1, 3, 125);
-            playerIdleAnimation.loop = true;
+                let playerIdleAnimation = playerIdleSheet.getAnimationBetween(engine, 1, 3, 125);
+                playerIdleAnimation.loop = true;
                 actor.addDrawing("idle", playerIdleAnimation);
                 break;
             case "Thing":
