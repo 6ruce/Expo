@@ -1,6 +1,7 @@
 How to build first time:
 * Install npm
-* Install cordova using command: npm install cordova
+* Install cordova using command: npm install -g cordova
+* Install tsc using command: npm install -g typescript
 * Clone repo: git clone https://github.com/6ruce/Expo
 * Install project packages, run command inside project dir: npm install
 * Add cordova platform you want to build for, eg.: cordova add platform browser

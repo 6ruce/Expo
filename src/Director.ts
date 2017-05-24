@@ -6,7 +6,8 @@ import * as R from "ramda"
 
 type Resources = {
     textures: {
-        Person: Ex.Texture
+        Person: Ex.Texture,
+        Box: Ex.Texture
     }
 }
 
@@ -57,6 +58,7 @@ export class Director {
             case "Thing":
                 actor.collisionType = Ex.CollisionType.Active;
                 actor.color = Ex.Color.Orange;
+            actor.addDrawing(new Ex.Sprite(resources.textures.Box, 0, 0, 32, 32));
                 break;
             case "Ground":
                 actor.collisionType = Ex.CollisionType.Fixed;

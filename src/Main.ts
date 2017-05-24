@@ -20,9 +20,15 @@ export class App {
 
         console.log("Game started!")
         let txAnimPlayerIdle = new Ex.Texture("/img/hero.png");
-        let loader = new Ex.Loader([txAnimPlayerIdle]);
+        let boxTexture = new Ex.Texture("/img/box.png");
+        let loader = new Ex.Loader([txAnimPlayerIdle, boxTexture]);
         game.start(loader).then(() => {
-            Director.direct(game, [new ExpoScene()], {textures: { Person: txAnimPlayerIdle}});
+            Director.direct(game, [new ExpoScene()], {
+                textures: {
+                    Person: txAnimPlayerIdle,
+                    Box: boxTexture
+                }
+            });
             game.goToScene("MainScene");
         });
 
