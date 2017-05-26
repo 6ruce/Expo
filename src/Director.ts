@@ -35,30 +35,31 @@ export class Director {
             case "Person":
                 actor = new ActorExtender(gameObject.x, gameObject.y,
                     gameObject.width, gameObject.height, Ex.Color.Black);
+                actor.friction = 0.5;
                 (actor as ActorExtender).updater = (engine: Ex.Engine, delta: number) => {
+                    actor.rotation = 0;
+                    actor.rx = 0;
                     if (engine.input.keyboard.isHeld(Ex.Input.Keys.Up)) {
-                        actor.body.acc.y = -3000;
-                    } else {
-                        actor.body.acc.y = 0;
+                        actor.body.vel.y = -300;
                     }
                     if (engine.input.keyboard.isHeld(Ex.Input.Keys.Right)) {
-                        actor.body.acc.x = 500;
+                        actor.body.acc.x = 800;
                     } else if (engine.input.keyboard.isHeld(Ex.Input.Keys.Left)) {
-                        actor.body.acc.x = -500;
+                        actor.body.acc.x = -800;
                     } else {
                         actor.body.acc.x = 0;
                     }
                 };
                 actor.collisionType = Ex.CollisionType.Active;
                 let playerIdleSheet = new Ex.SpriteSheet(resources.textures.Person, 5, 1, 32, 63);
-                let playerIdleAnimation = playerIdleSheet.getAnimationBetween(engine, 1, 3, 125);
+                let playerIdleAnimation = playerIdleSheet.getAnimationBetween(engine, 1, 3, 200);
                 playerIdleAnimation.loop = true;
                 actor.addDrawing("idle", playerIdleAnimation);
                 break;
             case "Thing":
                 actor.collisionType = Ex.CollisionType.Active;
                 actor.color = Ex.Color.Orange;
-            actor.addDrawing(new Ex.Sprite(resources.textures.Box, 0, 0, 32, 32));
+                actor.addDrawing(new Ex.Sprite(resources.textures.Box, 0, 0, 32, 32));
                 break;
             case "Ground":
                 actor.collisionType = Ex.CollisionType.Fixed;
