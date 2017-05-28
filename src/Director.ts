@@ -7,7 +7,8 @@ import * as R from "ramda"
 type Resources = {
     textures: {
         Person: Ex.Texture,
-        Box: Ex.Texture
+        Box: Ex.Texture,
+        Background: Ex.Texture
     }
 }
 
@@ -62,7 +63,19 @@ export class Director {
                 actor.addDrawing(new Ex.Sprite(resources.textures.Box, 0, 0, 32, 32));
                 break;
             case "Ground":
+                actor.color = new Ex.Color(77, 112, 44, 0.5);
                 actor.collisionType = Ex.CollisionType.Fixed;
+                break;
+            case "Background":
+                let backgroundTexture = resources.textures.Background;
+                let background = new Ex.Sprite(backgroundTexture, 0, 0, backgroundTexture.width, backgroundTexture.height);
+                actor = new Ex.Actor(0, 0, background.width, background.height);
+                actor.anchor.setTo(0, 0);
+                actor.addDrawing(background);
+                actor.collisionType = Ex.CollisionType.PreventCollision;
+                console.log(`Window w: ${window.innerWidth}`);
+                console.log(`Background w: ${background.width}`);
+                actor.scale = new Ex.Vector(window.innerWidth / background.width, window.innerHeight / background.height);
                 break;
             default:
                 console.error(`Unknown actor kind: ${gameObject.kind}`);
