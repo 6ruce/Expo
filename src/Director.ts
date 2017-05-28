@@ -73,8 +73,6 @@ export class Director {
                 actor.anchor.setTo(0, 0);
                 actor.addDrawing(background);
                 actor.collisionType = Ex.CollisionType.PreventCollision;
-                console.log(`Window w: ${window.innerWidth}`);
-                console.log(`Background w: ${background.width}`);
                 actor.scale = new Ex.Vector(window.innerWidth / background.width, window.innerHeight / background.height);
                 break;
             default:
