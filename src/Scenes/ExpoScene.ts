@@ -10,7 +10,7 @@ export class ExpoScene implements IScene {
     public name = "MainScene";
     public get actors(): Actor[] {
         return [
-            new Background(window.innerWidth/2, window.innerHeight/2, window.innerWidth, window.innerHeight)
+            new Background(window.innerWidth/2, window.innerHeight/2, window.innerWidth, window.innerHeight),
             new Person(250, 400, 32, 63),
             new Thing(250, 300, 32, 32),
             new Thing(150, 100, 32, 32),
