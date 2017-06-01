@@ -1,3 +1,11 @@
+---
+layout: post
+title: "What I get when choosing Excalibur.js as crosplatfor game engine"
+description: "Some thoughts on game engines and some progress mage so far"
+comments: true
+keywords: "gamedev, game egines, pixels"
+---
+
 # Exploring excaliburjs #
 
 ### Turned on physics for test game objects ###
