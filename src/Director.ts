@@ -1,8 +1,12 @@
-import { IScene } from "./Scenes/IScene"
-import { Actor } from "./Actors/Actor"
+import { IScene }        from "./Scenes/IScene"
+import { Actor }         from "./Actors/Actor"
+import { Person }        from "./Actors/Person"
 import { ActorExtender } from "./ActorExtender"
-import * as Ex from "excalibur"
-import * as R from "ramda"
+import { HeroMovements } from "./Animation/HeroMovements"
+import { Mapper }        from "./EngineAdapters/Expo/Mapper"
+
+import * as Ex           from "excalibur"
+import * as R            from "ramda"
 
 type Resources = {
     textures: {
@@ -40,16 +44,12 @@ export class Director {
                 (actor as ActorExtender).updater = (engine: Ex.Engine, delta: number) => {
                     actor.rotation = 0;
                     actor.rx = 0;
-                    if (engine.input.keyboard.isHeld(Ex.Input.Keys.Up)) {
-                        actor.body.vel.y = -300;
-                    }
-                    if (engine.input.keyboard.isHeld(Ex.Input.Keys.Right)) {
-                        actor.body.acc.x = 800;
-                    } else if (engine.input.keyboard.isHeld(Ex.Input.Keys.Left)) {
-                        actor.body.acc.x = -800;
-                    } else {
-                        actor.body.acc.x = 0;
-                    }
+                    const keyHeldFn: typeof engine.input.keyboard.isHeld = engine.input.keyboard.isHeld.bind(engine.input.keyboard);
+                    const updatedHero = HeroMovements.update(
+                        R.compose(keyHeldFn, Mapper.mapDomainKeys),
+                        <Person>gameObject,//Not quite good solution, think about Groub|Person type again
+                        delta);
+                    Mapper.applyPersonChangesToActor(updatedHero, actor);
                 };
                 actor.collisionType = Ex.CollisionType.Active;
                 let playerIdleSheet = new Ex.SpriteSheet(resources.textures.Person, 5, 1, 32, 63);
